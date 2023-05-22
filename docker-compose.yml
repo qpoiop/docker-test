@@ -1,0 +1,19 @@
+version: '3'
+services:
+  nest-app:
+    container_name: docker-test-container
+    hostname: docker-test-host
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/src/app
+    networks:
+      - docker-test-networks
+
+networks:
+  docker-test-networks:
+    driver: bridge
